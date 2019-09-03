@@ -114,7 +114,7 @@ public class StreamingTopologyTest extends TestCase {
         }
     }
 
-   public void testLookup() {
+   public void testTransactionEnhancement() {
 
         StreamsBuilder builder = new StreamsBuilder();
         KStream<String, Transaction> transactionStream = StreamingTopology.createStream(builder);

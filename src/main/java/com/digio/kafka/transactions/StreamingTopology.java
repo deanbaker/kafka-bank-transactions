@@ -65,12 +65,16 @@ public class StreamingTopology {
 
    public static GlobalKTable<String, String> createCategoryLookupTable(StreamsBuilder builder) {
 
-        return null;
+       return builder.globalTable("category-topic",
+               Consumed.with(new Serdes.StringSerde(), new Serdes.StringSerde()),
+               Materialized.as("category-lookup-store"));
     }
 
     public static KStream<String, Transaction> categorisedStream(KStream<String, Transaction> kStream, GlobalKTable<String, String> kTable) {
 
-        return null;
+        return kStream.leftJoin(kTable,
+                (String key, Transaction transaction) -> transaction.getCategory(),
+                (transaction, category) -> transaction.setCategory(category));
     }
 
     public static void topology(StreamsBuilder builder) {
