@@ -34,12 +34,18 @@ public class StreamingTopology {
 
     public static KStream<String, Transaction> createStream(StreamsBuilder builder) {
 
-        return null;
+        return builder.stream("transaction-topic", Consumed.with(new Serdes.StringSerde(), new TransactionSerde())
+                .withTimestampExtractor(new MessageTimeExtractor()));
     }
 
     public static KStream<String, Long> computeTotals(KStream<String, Transaction> kstream) {
 
-        return null;
+        return kstream.groupByKey()
+                .aggregate(
+                        () -> 0L,
+                        (key, value, aggregate) -> aggregate + value.getAmount(),
+                        Materialized.with(new Serdes.StringSerde(), new Serdes.LongSerde()))
+                .toStream();
     }
 
     public static KStream<Windowed<String>, Long> computeRunningTotal(KStream<String, Transaction> kStream) {
