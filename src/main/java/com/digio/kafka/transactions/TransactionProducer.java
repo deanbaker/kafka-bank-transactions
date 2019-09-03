@@ -44,7 +44,28 @@ public class TransactionProducer {
         Producer<String, String> producer = new KafkaProducer<>(properties);
 
         // Do the thing.
-
+        TimerTask repeatedTask = new TimerTask() {
+            public void run() {
+                // Write 1 per second - ramp this up to 100 when we get moving!
+                IntStream.range(0, 1).forEach(value -> {
+                    Transaction transaction = legacyBankingSystem.getTransaction();
+                    logger.info("Transaction {}", transaction);
+                    try {
+                        producer.send(new ProducerRecord<>(
+                                "transaction-topic",
+                                transaction.getCustomer(),
+                                objectMapper.writeValueAsString(transaction)));
+                    } catch (JsonProcessingException e) {
+                        logger.info("Could not write out my transaction!");
+                    }
+                });
+                producer.flush();
+            }
+        };
+        Timer timer = new Timer("Timer");
+        long delay = 1000L;
+        long period = 1000L;
+        timer.scheduleAtFixedRate(repeatedTask, delay, period);
 
         // Close the producer gracefully
         Runtime.getRuntime().addShutdownHook(new Thread(producer::close));
