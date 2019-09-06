@@ -90,7 +90,7 @@ public class StreamingTopology {
         windowedLongKStream.selectKey((key, value) -> key.toString()).to("customer-rolling-total-topic", stringLongProduced);
         enhancedTransactions
                 .peek((key, value) -> logger.info(value.toString()))
-                .to("enhanced-transactions-topic", Produced.with(new Serdes.StringSerde(), new TransactionSerde()));
+                .to("enhanced-transaction-topic", Produced.with(new Serdes.StringSerde(), new TransactionSerde()));
     }
 
     public static void main(String[] args) {
