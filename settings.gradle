@@ -1,2 +1,6 @@
 rootProject.name = 'transactions'
 
+include 'applications/producer-application'
+include 'applications/streaming-application'
+include 'components/domain'
+include 'components/kafka'

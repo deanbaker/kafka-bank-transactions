@@ -69,4 +69,4 @@ CG04:Whisky
              --property print.value=true \
              --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
              --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
-`
+

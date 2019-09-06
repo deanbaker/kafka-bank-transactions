@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'com.digio.kafka'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":components/domain")
+}
