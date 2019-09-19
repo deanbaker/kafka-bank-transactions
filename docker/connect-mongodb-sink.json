@@ -1,0 +1,25 @@
+{
+  "type" : "sink",
+  "config" : {
+    "value.converter.schemas.enable" : "false",
+    "key.converter.schemas.enable" : "false",
+    "transforms.WrapKey.field" : "_id",
+    "key.converter" : "org.apache.kafka.connect.storage.StringConverter",
+    "connector.class" : "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
+    "topics" : "transaction-topic",
+    "mongodb.collection" : "MyCollection",
+    "value.converter" : "org.apache.kafka.connect.json.JsonConverter",
+    "transforms" : "WrapKey",
+    "name" : "MongoConnector",
+    "transforms.WrapKey.type" : "org.apache.kafka.connect.transforms.HoistField$Key",
+    "tasks.max" : "1",
+    "mongodb.connection.uri" : "mongodb://mongo/test?retryWrites=true"
+  },
+  "name" : "MongoConnector",
+  "tasks" : [
+    {
+      "connector" : "MongoConnector",
+      "task" : 0
+    }
+  ]
+}

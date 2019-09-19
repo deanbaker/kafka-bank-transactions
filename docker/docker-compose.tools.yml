@@ -1,0 +1,10 @@
+version: '2.2'
+services:
+  kafka-tools:
+    build:
+      context: ./kafka-tools
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    volumes:
+      - ./data:/root/data
