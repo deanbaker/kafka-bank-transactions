@@ -1,0 +1,22 @@
+{
+  "config" : {
+    "name" : "MongoTotalConnector",
+    "topics" : "customer-total-topic",
+    "value.converter.schemas.enable" : "false",
+    "value.converter" : "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable" : "false",
+    "key.converter" : "org.apache.kafka.connect.storage.StringConverter",
+    "connector.class" : "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
+    "mongodb.connection.uri" : "mongodb://mongo/test?retryWrites=true",
+    "mongodb.collection" : "CustomerTotals",
+    "transforms" : "WrapKey,Cast,HoistField",
+    "transforms.WrapKey.field" : "_id",
+    "transforms.WrapKey.type" : "org.apache.kafka.connect.transforms.HoistField$Key",
+    "transforms.HoistField.type": "org.apache.kafka.connect.transforms.HoistField$Value",
+    "transforms.HoistField.field": "balance",
+    "transforms.Cast.type": "org.apache.kafka.connect.transforms.Cast$Value",
+    "transforms.Cast.spec": "string",
+    "tasks.max" : "1"
+  },
+  "name" : "MongoTotalConnector"
+}

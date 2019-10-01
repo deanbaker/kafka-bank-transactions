@@ -8,7 +8,9 @@ use kafka_bank
 List connectors:
 ```sh
 curl localhost:8083/connectors
-curl -d @connect-mongodb-sink.json -X POST http://localhost:8083/connectors
+curl -X POST -H "Content-Type: application/json" -d @connect-mongodb-sink.json localhost:8083/connectors
+curl -X POST -H "Content-Type: application/json" -d @connect-mongodb-rolling-sink.json localhost:8083/connectors
+curl -X POST -H "Content-Type: application/json" -d @connect-mongodb-total-sink.json localhost:8083/connectors
 ```
 
 
