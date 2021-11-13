@@ -1,4 +1,4 @@
-package com.digio.kafka.transactions.serdes;
+package com.workshop.kafka.transactions.serdes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Deserializer;

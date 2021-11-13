@@ -98,22 +98,22 @@ Go have a look at `create-topics.sh` file for more details...
 
 #### Create the input topic:
 ```bash
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --create --topic transaction-topic --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server kafka-1:19092 --create --topic transaction-topic --partitions 1 --replication-factor 1
 ```
 
 #### Create the category topic:
 ```bash
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --create --topic category-topic --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server kafka-1:19092 --create --topic category-topic --partitions 1 --replication-factor 1
 ```
 
 #### Create the enhanced transaction topic
 ```bash
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --create --topic enhanced-transaction-topic --partitions 1 --replication-factor 1 
+kafka-topics --bootstrap-server kafka-1:19092 --create --topic enhanced-transaction-topic --partitions 1 --replication-factor 1 
 ```
 
 #### Create the running total topic:
 ```bash
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --create \
+kafka-topics --bootstrap-server kafka-1:19092 --create \
             --topic customer-total-topic \
             --partitions 1 \
             --replication-factor 1 \
@@ -128,7 +128,7 @@ waiting the default hours to see compaction in action.
 #### Create the windowed topic 
 
 ```bash
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --create \
+kafka-topics --bootstrap-server kafka-1:19092 --create \
             --topic customer-rolling-total-topic \
             --partitions 1 \
             --replication-factor 1 \
@@ -140,7 +140,7 @@ waiting the default hours to see compaction in action.
 #### Consume a topic
 We will use the console consumer to keep track of how things are going:
 ```bash
- ./bin/kafka-console-consumer.sh --bootstrap-server kafka-1:19092 \
+ kafka-console-consumer.sh --bootstrap-server kafka-1:19092 \
              --topic customer-total-topic \
              --from-beginning \
              --formatter kafka.tools.DefaultMessageFormatter \
@@ -153,11 +153,11 @@ We will use the console consumer to keep track of how things are going:
 #### Other useful commands
 ````bash
 # list topics
-./bin/kafka-topics.sh --bootstrap-server kafka-1:19092 --list
+kafka-topics --bootstrap-server kafka-1:19092 --list
  
  
  # Read the raw transactions
- ./bin/kafka-console-consumer.sh --bootstrap-server kafka-1:19092 \
+ kafka-console-consumer --bootstrap-server kafka-1:19092 \
              --topic transaction-topic \
              --from-beginning \
              --formatter kafka.tools.DefaultMessageFormatter \
@@ -165,5 +165,5 @@ We will use the console consumer to keep track of how things are going:
              --property print.value=true \ 
              
 # Produce directly to the queue             
-./bin/kafka-console-producer.sh --broker-list kafka-1:19092 --topic category-topic --property "parse.key=true" --property "key.separator=:"             
+kafka-console-producer --broker-list kafka-1:19092 --topic category-topic --property "parse.key=true" --property "key.separator=:"             
 ````

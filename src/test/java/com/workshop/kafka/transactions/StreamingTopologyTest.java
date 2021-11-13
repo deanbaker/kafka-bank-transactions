@@ -1,7 +1,7 @@
-package com.digio.kafka.transactions;
+package com.workshop.kafka.transactions;
 
-import com.digio.kafka.transactions.serdes.JsonDeserializer;
-import com.digio.kafka.transactions.serdes.JsonSerializer;
+import com.workshop.kafka.transactions.serdes.JsonDeserializer;
+import com.workshop.kafka.transactions.serdes.JsonSerializer;
 import junit.framework.TestCase;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
