@@ -1,4 +1,4 @@
-package com.digio.kafka.transactions;
+package com.workshop.kafka.transactions;
 
 public class Transaction {
 

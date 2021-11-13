@@ -1,7 +1,7 @@
-package com.digio.kafka.transactions;
+package com.workshop.kafka.transactions;
 
-import com.digio.kafka.transactions.serdes.MessageTimeExtractor;
-import com.digio.kafka.transactions.serdes.TransactionSerde;
+import com.workshop.kafka.transactions.serdes.MessageTimeExtractor;
+import com.workshop.kafka.transactions.serdes.TransactionSerde;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
