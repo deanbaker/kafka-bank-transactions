@@ -1,6 +1,6 @@
-package com.digio.kafka.transactions.serdes;
+package com.workshop.kafka.transactions.serdes;
 
-import com.digio.kafka.transactions.Transaction;
+import com.workshop.kafka.transactions.Transaction;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serializer;
