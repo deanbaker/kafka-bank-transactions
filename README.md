@@ -167,3 +167,14 @@ kafka-topics --bootstrap-server kafka-1:19092 --list
 # Produce directly to the queue             
 kafka-console-producer --broker-list kafka-1:19092 --topic category-topic --property "parse.key=true" --property "key.separator=:"             
 ````
+
+## Branching for your convenience
+We will be working through problems as we go - to help us along there are branches created that can step us through the solution.
+1. `master` This is the first branch to look at. Nothing is solved!
+2. `producer-complete` This branch solves the problem of putting messages onto the `transaction-topic`
+3. `totals-complete` This branch solves the account total aggregation
+4. `rolling-totals-complete` This branch solves the rolling window problem
+5. `transaction-enhancement-complete` This branch solves the data enhancement problem
+6. `complete` This branch sinks the various streams back to topics
+
+
