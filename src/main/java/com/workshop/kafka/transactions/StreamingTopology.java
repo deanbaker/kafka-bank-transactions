@@ -1,5 +1,6 @@
 package com.workshop.kafka.transactions;
 
+import com.workshop.kafka.transactions.serdes.MessageTimeExtractor;
 import com.workshop.kafka.transactions.serdes.TransactionSerde;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
