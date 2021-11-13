@@ -1,4 +1,4 @@
-package com.digio.kafka.transactions;
+package com.workshop.kafka.transactions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package com.digio.kafka.transactions;
+package com.workshop.kafka.transactions;
 
 import java.util.Arrays;
 import java.util.Date;
